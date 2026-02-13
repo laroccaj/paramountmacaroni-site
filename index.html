@@ -251,7 +251,7 @@
       </figure>
 
       <figure class="card">
-        <img src="images/Original Paramount Macaroni Photo.jpeg" alt="">
+        <img src="images/Original Paramount Macaroni Photo.jpg" alt="">
         <figcaption>
           <p class="capTitle">Trade photo (April 1940)</p>
           <p class="capMeta">Industry publication image related to production.</p>
@@ -281,108 +281,6 @@ images.forEach(img=>{
 });
 
 lightbox.addEventListener("click",()=>{
-  lightbox.classList.remove("active");
-});
-</script>
-
-</body>
-</html>      margin:0;
-      font-weight:500;
-      letter-spacing:.04em;
-    }
-
-    .banner{
-      background:#1b1c1f;
-      padding:18px;
-      border-radius:8px;
-      margin-bottom:30px;
-    }
-
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:16px;
-    }
-
-    .gallery img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-      border-radius:8px;
-      cursor:pointer;
-      transition:.15s ease;
-    }
-
-    .gallery img:hover{
-      transform:scale(1.02);
-    }
-
-    /* Lightbox */
-    .lightbox{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,.85);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:999;
-    }
-
-    .lightbox img{
-      max-width:90%;
-      max-height:85%;
-      border-radius:6px;
-    }
-
-    .lightbox.active{
-      display:flex;
-    }
-  </style>
-</head>
-
-<body>
-
-<div class="container">
-
-  <header>
-    <img src="images/Original Paramount Macaroni Logo1930.png" alt="Paramount Macaroni Logo">
-    <h1>Paramount Macaroni</h1>
-  </header>
-
-  <div class="banner">
-    Historic photographs and documents related to Paramount Macaroni.
-  </div>
-
-  <div class="gallery">
-    <img src="images/Original Paramount truck.jpg" alt="">
-    <img src="images/Original Paramount to Machine Corp June 1957.jpg" alt="">
-    <img src="images/Original Paramount Macaroni Photo.jpeg" alt="">
-    <img src="images/Original Paramount building.jpg" alt="">
-    <img src="images/Original Paramount box 1930.png" alt="">
-  </div>
-
-</div>
-
-<div class="lightbox" id="lightbox">
-  <img id="lightbox-img" src="">
-</div>
-
-<script>
-const galleryImages = document.querySelectorAll(".gallery img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-
-galleryImages.forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.classList.add("active");
-    lightboxImg.src = img.src;
-  });
-});
-
-lightbox.addEventListener("click", () => {
   lightbox.classList.remove("active");
 });
 </script>
