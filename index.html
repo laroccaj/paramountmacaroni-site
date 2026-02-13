@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Paramount Macaroni</title>
+  <meta name="description" content="Paramount Macaroni — historic images and ephemera gallery." />
+
+  <style>
+    :root{
+      --bg: #0f0f10;
+      --panel: #17181a;
+      --text: rgba(255,255,255,.90);
+      --muted: rgba(255,255,255,.70);
+      --rule: rgba(255,255,255,.12);
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+
+      --max: 1100px;
+      --radius: 16px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--sans);
+      background: radial-gradient(1200px 500px at 25% 0%, rgba(255,255,255,.06), transparent 60%),
+                  radial-gradient(900px 400px at 75% 0%, rgba(255,255,255,.04), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+    }
+
+    a{ color: inherit; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 44px;
+    }
+
+    /* Header */
+    header{
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .logo{
+      width: 88px;
+      height: 52px;
+      object-fit: contain;
+      object-position: left center;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,.35));
+      flex: 0 0 auto;
+    }
+
+    .brand{
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      min-width: 0;
+    }
+
+    .brand h1{
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(26px, 4vw, 40px);
+      letter-spacing: .5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand p{
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Hero banner */
+    .banner{
+      margin-top: 18px;
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 20px 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .banner .title{
+      margin: 0;
+      font-size: clamp(18px, 2.2vw, 22px);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.88);
+    }
+
+    .banner .sub{
+      margin: 10px 0 0;
+      color: var(--muted);
+      max-width: 72ch;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    /* Gallery */
+    .section{
+      margin-top: 26px;
+      padding-top: 8px;
+    }
+
+    .section h2{
+      margin: 0 0 10px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: rgba(255,255,255,.78);
+    }
+
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+
+    .card{
+      grid-column: span 6;
+      background: var(--panel);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      cursor: zoom-in;
+      transition: transform .12s ease, border-color .12s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.20);
+    }
+
+    .card img{
+      display: block;
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background: #0b0b0c;
+    }
+
+    .cap{
+      padding: 10px 12px 12px;
+      border-top: 1px solid var(--rule);
+    }
+    .cap .k{
+      font-size: 13px;
+      color: rgba(255,255,255,.85);
+      margin: 0 0 4px;
+    }
+    .cap .d{
+      font-size: 12px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 860px){
+      .card{ grid-column: span 12; }
+      .card img{ height: 260px; }
+      header{ padding: 12px; }
+      .logo{ width: 78px; height: 46px; }
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(4px);
+      z-index: 50;
+    }
+    .lightbox[aria-hidden="false"]{ display: flex; }
+
+    .lb-panel{
+      max-width: min(1100px, 96vw);
+      max-height: 88vh;
+      width: 100%;
+      background: #0e0f10;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+
+    .lb-top{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .lb-title{
+      font-size: 13px;
+      color: rgba(255,255,255,.85);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+    }
+
+    .lb-close{
+      appearance: none;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: rgba(255,255,255,.88);
+      border-radius: 12px;
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .lb-close:hover{ background: rgba(255,255,255,.10); }
+
+    .lb-img{
+      width: 100%;
+      height: calc(88vh - 44px);
+      object-fit: contain;
+      background: #0b0b0c;
+      display: block;
+    }
+
+    /* Small note */
+    .note{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header>
+      <!-- Update these paths if your images live in a subfolder like /images/ -->
+      <img class="logo" src="Original Paramount Macaroni Logo1930.png" alt="Paramount Macaroni logo" />
+      <div class="brand">
+        <h1>Paramount Macaroni</h1>
+        <p>Historic photos &amp; ephemera</p>
+      </div>
+    </header>
+
+    <section class="banner" aria-label="Page banner">
+      <p class="title">Paramount Macaroni</p>
+      <p class="sub">
+        A one-page archive featuring period imagery from Paramount Macaroni and related Brooklyn manufacturing history.
+        Click any image below to view it larger.
+      </p>
+    </section>
+
+    <section class="section" aria-label="Gallery">
+      <h2>Gallery</h2>
+
+      <div class="grid">
+        <figure class="card" data-full="Original Paramount truck.jpg" data-title="Delivery truck">
+          <img src="Original Paramount truck.jpg" alt="Paramount Macaroni delivery truck in front of Brockway Motor Company" />
+          <figcaption class="cap">
+            <p class="k">Delivery truck</p>
+            <p class="d">Paramount Macaroni Mfg. Co., Inc. branding on truck.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card" data-full="Original Paramount to Machine Corp June 1957.jpg" data-title="Letter (June 26, 1957)">
+          <img src="Original Paramount to Machine Corp June 1957.jpg" alt="Letterhead and typed letter dated June 26, 1957 from Paramount Macaroni Mfg. Co., Inc." />
+          <figcaption class="cap">
+            <p class="k">Letter (June 26, 1957)</p>
+            <p class="d">Correspondence on Paramount Macaroni letterhead.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card" data-full="Original Paramount Macaroni Photo.jpeg" data-title="Macaroni Journal (April 1940)">
+          <img src="Original Paramount Macaroni Photo.jpeg" alt="The Macaroni Journal page featuring Consolidated Macaroni Machine Corp., April 1940" />
+          <figcaption class="cap">
+            <p class="k">Macaroni Journal (April 1940)</p>
+            <p class="d">Consolidated Macaroni Machine Corp. plant/presses photo.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card" data-full="Original Paramount building.jpg" data-title="Paramount building">
+          <img src="Original Paramount building.jpg" alt="Paramount building exterior" />
+          <figcaption class="cap">
+            <p class="k">Paramount building</p>
+            <p class="d">Factory/office exterior image.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card" data-full="Original Paramount box 1930.png" data-title="Product box (c. 1930)">
+          <img src="Original Paramount box 1930.png" alt="Paramount Macaroni product box illustration" />
+          <figcaption class="cap">
+            <p class="k">Product box (c. 1930)</p>
+            <p class="d">Paramount Macaroni packaging art.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="note">
+        If your files are in an <strong>images/</strong> folder, change each <code>src="..."</code> above to
+        <code>src="images/..."</code> (same for the logo).
+      </p>
+    </section>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <div class="lb-panel">
+      <div class="lb-top">
+        <p class="lb-title" id="lbTitle">Image</p>
+        <button class="lb-close" id="lbClose" type="button" aria-label="Close viewer">Close</button>
+      </div>
+      <img class="lb-img" id="lbImg" alt="" />
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lbImg');
+      const lbTitle = document.getElementById('lbTitle');
+      const lbClose = document.getElementById('lbClose');
+
+      function openLightbox(src, title){
+        lbImg.src = src;
+        lbImg.alt = title || 'Gallery image';
+        lbTitle.textContent = title || 'Gallery image';
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox(){
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('click', () => {
+          openLightbox(card.dataset.full, card.dataset.title);
+        });
+        card.addEventListener('keydown', (e) => {
+          if(e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(card.dataset.full, card.dataset.title);
+          }
+        });
+        // Make figure keyboard-focusable
+        card.tabIndex = 0;
+      });
+
+      lbClose.addEventListener('click', closeLightbox);
+      lb.addEventListener('click', (e) => {
+        if(e.target === lb) closeLightbox();
+      });
+      window.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape' && lb.getAttribute('aria-hidden') === 'false') closeLightbox();
+      });
+    })();
+  </script>
+</body>
+</html>
