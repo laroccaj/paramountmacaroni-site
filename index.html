@@ -3,38 +3,290 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Paramount Macaroni</title>
+  <title>Paramount Macaroni — Archive</title>
 
   <style>
+    :root{
+      --bg:#f4f1ea;
+      --panel:#ffffff;
+      --panel-soft:#faf8f3;
+      --text:#222;
+      --muted:#666;
+      --rule:#ddd;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      --serif:Georgia,"Times New Roman",Times,serif;
+
+      --max:1120px;
+      --radius:14px;
+      --imgw:920px;
+    }
+
+    *{box-sizing:border-box}
+
     body{
       margin:0;
-      font-family: Arial, Helvetica, sans-serif;
-      background:#111;
-      color:#eee;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(800px 300px at 20% 0%, rgba(0,0,0,.03), transparent 60%),
+        radial-gradient(700px 300px at 80% 0%, rgba(0,0,0,.02), transparent 60%),
+        var(--bg);
     }
 
-    .container{
-      max-width:1100px;
+    .wrap{
+      max-width:var(--max);
       margin:auto;
-      padding:20px;
+      padding:28px 18px 50px;
     }
 
-    header{
+    /* Top bar */
+    .topbar{
       display:flex;
       align-items:center;
-      gap:16px;
-      border-bottom:1px solid #333;
-      padding-bottom:14px;
-      margin-bottom:20px;
+      gap:14px;
+      padding:12px 14px;
+      background:var(--panel);
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
 
-    header img{
-      height:60px;
+    .logo{
+      width:92px;
+      height:54px;
+      object-fit:contain;
     }
 
-    header h1{
-      font-size:32px;
+    .brandtext .title{
+      font-family:var(--serif);
+      font-size:22px;
       margin:0;
+    }
+
+    .brandtext .sub{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      background:var(--panel-soft);
+    }
+
+    .heroInner{
+      padding:22px 20px 18px;
+    }
+
+    .heroKicker{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#888;
+    }
+
+    .heroH1{
+      margin:10px 0 0;
+      font-family:var(--serif);
+      font-size:40px;
+    }
+
+    .heroP{
+      margin:12px 0 0;
+      color:var(--muted);
+      max-width:70ch;
+      line-height:1.6;
+      font-size:15px;
+    }
+
+    /* Gallery */
+    .section{margin-top:26px}
+
+    .sectionHeader h2{
+      margin:0 0 12px 0;
+      font-size:14px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:#555;
+    }
+
+    .gallery{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      align-items:center;
+    }
+
+    figure.card{
+      width:min(var(--imgw),100%);
+      margin:0;
+      border:1px solid var(--rule);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:var(--panel);
+      box-shadow:var(--shadow);
+    }
+
+    figure.card img{
+      display:block;
+      width:100%;
+      height:auto;
+      cursor:pointer;
+    }
+
+    figcaption{
+      padding:12px 14px 14px;
+      border-top:1px solid var(--rule);
+      background:#fcfbf8;
+    }
+
+    figcaption .capTitle{
+      margin:0;
+      font-size:14px;
+    }
+
+    figcaption .capMeta{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    footer{
+      margin-top:26px;
+      padding-top:16px;
+      border-top:1px solid var(--rule);
+      color:#777;
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.75);
+      z-index:1000;
+    }
+
+    .lightbox.active{display:flex}
+
+    .lightbox img{
+      max-width:92%;
+      max-height:90%;
+      border-radius:6px;
+      background:white;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <img class="logo" src="images/Original Paramount Macaroni Logo1930.png" alt="Paramount Macaroni logo">
+    <div class="brandtext">
+      <p class="title">Paramount Macaroni</p>
+      <p class="sub">Historic photos, packaging, and correspondence</p>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="heroInner">
+      <div class="heroKicker">Archive</div>
+      <h1 class="heroH1">Paramount Macaroni</h1>
+      <p class="heroP">
+        A curated collection of period imagery including packaging, factory photography,
+        correspondence, and trade publication material associated with Paramount Macaroni.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sectionHeader">
+      <h2>Gallery</h2>
+    </div>
+
+    <div class="gallery">
+
+      <figure class="card">
+        <img src="images/Original Paramount box 1930.png" alt="">
+        <figcaption>
+          <p class="capTitle">Product box (c. 1930)</p>
+          <p class="capMeta">Packaging artwork featuring Paramount Macaroni branding.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="images/Original Paramount building.jpg" alt="">
+        <figcaption>
+          <p class="capTitle">Paramount building</p>
+          <p class="capMeta">Exterior photograph of the facility.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="images/Original Paramount truck.jpg" alt="">
+        <figcaption>
+          <p class="capTitle">Delivery truck</p>
+          <p class="capMeta">Branded delivery vehicle associated with Paramount Macaroni.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="images/Original Paramount to Machine Corp June 1957.jpg" alt="">
+        <figcaption>
+          <p class="capTitle">Letter (June 26, 1957)</p>
+          <p class="capMeta">Typed correspondence on company letterhead.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="card">
+        <img src="images/Original Paramount Macaroni Photo.jpeg" alt="">
+        <figcaption>
+          <p class="capTitle">Trade photo (April 1940)</p>
+          <p class="capMeta">Industry publication image related to production.</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <footer>
+    Paramount Macaroni, New York
+  </footer>
+
+</div>
+
+<script>
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.createElement("div");
+lightbox.className = "lightbox";
+document.body.appendChild(lightbox);
+
+images.forEach(img=>{
+  img.addEventListener("click",()=>{
+    lightbox.innerHTML = `<img src="${img.src}">`;
+    lightbox.classList.add("active");
+  });
+});
+
+lightbox.addEventListener("click",()=>{
+  lightbox.classList.remove("active");
+});
+</script>
+
+</body>
+</html>      margin:0;
       font-weight:500;
       letter-spacing:.04em;
     }
