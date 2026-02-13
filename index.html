@@ -4,7 +4,6 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Paramount Macaroni — Archive</title>
-  <meta name="description" content="Paramount Macaroni — historic photos, packaging, and correspondence." />
 
   <style>
     :root{
@@ -42,7 +41,6 @@
       padding:28px 18px 50px;
     }
 
-    /* Top bar */
     .topbar{
       display:flex;
       align-items:center;
@@ -72,14 +70,12 @@
       font-size:13px;
     }
 
-    /* Hero */
     .hero{
       margin-top:18px;
       border:1px solid var(--rule);
       border-radius:var(--radius);
-      overflow:hidden;
-      box-shadow:var(--shadow);
       background:var(--panel-soft);
+      box-shadow:var(--shadow);
     }
 
     .heroInner{
@@ -97,7 +93,6 @@
       margin:10px 0 0;
       font-family:var(--serif);
       font-size:40px;
-      line-height:1.1;
     }
 
     .heroP{
@@ -108,7 +103,6 @@
       font-size:15px;
     }
 
-    /* Gallery */
     .section{margin-top:26px}
 
     .sectionHeader h2{
@@ -136,18 +130,11 @@
       box-shadow:var(--shadow);
     }
 
-    figure.card button{
-      all: unset;
-      display:block;
-      width:100%;
-      cursor: zoom-in;
-    }
-
     figure.card img{
       display:block;
       width:100%;
       height:auto;
-      background:#fff;
+      cursor:pointer;
     }
 
     figcaption{
@@ -165,7 +152,6 @@
       margin:6px 0 0;
       color:var(--muted);
       font-size:12px;
-      line-height:1.45;
     }
 
     footer{
@@ -177,7 +163,6 @@
       text-align:center;
     }
 
-    /* Lightbox */
     .lightbox{
       position:fixed;
       inset:0;
@@ -186,143 +171,109 @@
       justify-content:center;
       background:rgba(0,0,0,.75);
       z-index:1000;
-      padding:16px;
     }
+
     .lightbox.active{display:flex}
 
     .lightbox img{
       max-width:92%;
       max-height:90%;
-      border-radius:8px;
-      background:#fff;
-      box-shadow:0 18px 60px rgba(0,0,0,.35);
+      border-radius:6px;
+      background:white;
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <div class="topbar">
-      <img class="logo" src="images/Paramount-Logo1930.png" alt="Paramount Macaroni logo">
-      <div class="brandtext">
-        <p class="title">Paramount Macaroni</p>
-        <p class="sub">Historic photos, packaging, and correspondence</p>
-      </div>
+  <div class="topbar">
+    <img class="logo" src="images/paramount-logo1930.png" alt="Paramount Macaroni logo">
+    <div class="brandtext">
+      <p class="title">Paramount Macaroni</p>
+      <p class="sub">Historic photos, packaging, and correspondence</p>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="heroInner">
+      <div class="heroKicker">Archive</div>
+      <h1 class="heroH1">Paramount Macaroni</h1>
+      <p class="heroP">
+        A curated collection of period imagery including packaging, factory photography,
+        correspondence, and trade publication material associated with Paramount Macaroni.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sectionHeader">
+      <h2>Gallery</h2>
     </div>
 
-    <section class="hero" aria-label="Archive intro">
-      <div class="heroInner">
-        <div class="heroKicker">Archive</div>
-        <h1 class="heroH1">Paramount Macaroni</h1>
-        <p class="heroP">
-          A curated collection of period imagery including packaging, factory photography,
-          correspondence, and trade publication material associated with Paramount Macaroni.
-        </p>
-      </div>
-    </section>
+    <div class="gallery">
 
-    <section class="section" aria-label="Gallery">
-      <div class="sectionHeader">
-        <h2>Gallery</h2>
-      </div>
+      <figure class="card">
+        <img src="images/paramount-box-1930.png" alt="">
+        <figcaption>
+          <p class="capTitle">Product box (c. 1930)</p>
+        </figcaption>
+      </figure>
 
-      <div class="gallery">
+      <figure class="card">
+        <img src="images/paramount-building.jpg" alt="">
+        <figcaption>
+          <p class="capTitle">Paramount building</p>
+        </figcaption>
+      </figure>
 
-        <!-- Box FIRST -->
-        <figure class="card">
-          <button type="button" class="zoom" data-src="images/Paramount-box-1930.png" data-title="Product box (c. 1930)">
-            <img src="images/Paramount-box-1930.png" alt="Paramount Macaroni box (c. 1930)">
-          </button>
-          <figcaption>
-            <p class="capTitle">Product box (c. 1930)</p>
-            <p class="capMeta">Packaging artwork featuring Paramount Macaroni branding.</p>
-          </figcaption>
-        </figure>
+      <figure class="card">
+        <img src="images/paramount-truck.jpg" alt="">
+        <figcaption>
+          <p class="capTitle">Delivery truck</p>
+        </figcaption>
+      </figure>
 
-        <figure class="card">
-          <button type="button" class="zoom" data-src="images/Paramount-building.jpg" data-title="Paramount building">
-            <img src="images/Paramount-building.ipg" alt="Paramount building">
-          </button>
-          <figcaption>
-            <p class="capTitle">Paramount building</p>
-            <p class="capMeta">Exterior photograph of the facility.</p>
-          </figcaption>
-        </figure>
+      <figure class="card">
+        <img src="images/paramount-letter-1957.jpg" alt="">
+        <figcaption>
+          <p class="capTitle">Letter (1957)</p>
+        </figcaption>
+      </figure>
 
-        <figure class="card">
-          <button type="button" class="zoom" data-src="images/Paramount-truck.jpg" data-title="Delivery truck">
-            <img src="images/Paramount-truck.jpg" alt="Paramount delivery truck">
-          </button>
-          <figcaption>
-            <p class="capTitle">Delivery truck</p>
-            <p class="capMeta">Branded delivery vehicle associated with Paramount Macaroni.</p>
-          </figcaption>
-        </figure>
+      <figure class="card">
+        <img src="images/paramount-macaroni-journal.jpg" alt="">
+        <figcaption>
+          <p class="capTitle">Trade photo</p>
+        </figcaption>
+      </figure>
 
-        <figure class="card">
-          <button type="button" class="zoom" data-src="images/Paramount-letter-1957.jpg" data-title="Letter (1957)">
-            <img src="images/Paramount-letter-1957.jpg" alt="Letter dated 1957 on Paramount Macaroni letterhead">
-          </button>
-          <figcaption>
-            <p class="capTitle">Letter (1957)</p>
-            <p class="capMeta">Typed correspondence on company letterhead.</p>
-          </figcaption>
-        </figure>
+    </div>
+  </section>
 
-        <figure class="card">
-          <button type="button" class="zoom" data-src="images/Paramount-macaroni-journal.jpg" data-title="Trade photo">
-            <img src="images/Paramount-macaroni-journal.jpg" alt="Macaroni journal / trade publication image">
-          </button>
-          <figcaption>
-            <p class="capTitle">Trade photo</p>
-            <p class="capMeta">Industry publication image related to production.</p>
-          </figcaption>
-        </figure>
+  <footer>
+    Paramount Macaroni, New York
+  </footer>
 
-      </div>
-    </section>
+</div>
 
-    <footer>
-      Paramount Macaroni, New York
-    </footer>
+<script>
+const images = document.querySelectorAll(".gallery img");
+const lightbox = document.createElement("div");
+lightbox.className = "lightbox";
+document.body.appendChild(lightbox);
 
-  </div>
+images.forEach(img=>{
+  img.addEventListener("click",()=>{
+    lightbox.innerHTML = `<img src="${img.src}">`;
+    lightbox.classList.add("active");
+  });
+});
 
-  <!-- Lightbox (single instance; prevents “page twice” type bugs) -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <img id="lightbox-img" alt="">
-  </div>
+lightbox.addEventListener("click",()=>{
+  lightbox.classList.remove("active");
+});
+</script>
 
-  <script>
-    (function(){
-      const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-
-      document.querySelectorAll(".zoom").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const src = btn.getAttribute("data-src");
-          const title = btn.getAttribute("data-title") || "Image";
-          lightboxImg.src = src;
-          lightboxImg.alt = title;
-          lightbox.classList.add("active");
-          lightbox.setAttribute("aria-hidden", "false");
-          document.body.style.overflow = "hidden";
-        });
-      });
-
-      function close() {
-        lightbox.classList.remove("active");
-        lightbox.setAttribute("aria-hidden", "true");
-        lightboxImg.src = "";
-        document.body.style.overflow = "";
-      }
-
-      lightbox.addEventListener("click", close);
-      window.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && lightbox.classList.contains("active")) close();
-      });
-    })();
-  </script>
 </body>
 </html>
